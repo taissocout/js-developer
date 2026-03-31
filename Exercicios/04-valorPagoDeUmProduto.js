@@ -1,28 +1,55 @@
-/* 
-    Valor pago por um produto
-    Objetivo:
-    - Receber o preço original do produto
-    - Calcular o valor pago com desconto de 10%
-    - Exibir o valor pago no console
-    Lógica:
-    1. Recebe o preço original do produto
-    2. Calcula o valor do desconto (10% do preço original)
-    3. Subtrai o valor do desconto do preço original para obter o valor pago
-    4. Exibe o valor pago no console, formatado com 2 casas decimais
+/*
+Programa para calcular o valor a ser pago com base na forma de pagamento
+
+Objetivo:
+- Aplicar desconto ou juros dependendo da condição de pagamento escolhida
+- Formas de pagamento:
+    - débito => 10% de desconto
+    - dinheiro/pix => 15% de desconto
+    - duas vezes => preço normal
+    - acima de duas vezes => 10% de juros
+- Exibir o valor final formatado com 2 casas decimais
 */
 
-// 1. Declaração da variável para o preço original do produto
-const precoOriginal = 100;
-const desconto = precoOriginal * 0.10; // Calcula o valor do desconto (10% do preço original)
-const valorPago = precoOriginal - desconto; // Calcula o valor pago subtraindo o desconto do preço original
+// 1. Declaração das variáveis
+const precoEtiqueta = 100;       // Preço normal do produto
+const descontoDebito = 0.10;     // 10% de desconto no débito
+const descontoDinheiroPix = 0.15;// 15% de desconto em dinheiro ou pix
+const jurosAcimaDuasVezes = 0.10;// 10% de juros para parcelamento acima de duas vezes
 
-// 2. Exibe o valor pago no console, formatado com 2 casas decimais
-console.log(`O valor pago pelo produto é: R$ ${valorPago.toFixed(2)}`);
+// 2. Condição de pagamento escolhida
+// Pode ser: "debito", "dinheiro", "pix", "duas vezes", "acima de duas vezes"
+const condicaoPagamento = "pix"; // exemplo
+
+// 3. Cálculo do valor final
+let valorPago;
+
+if (condicaoPagamento === "debito") {
+    valorPago = precoEtiqueta * (1 - descontoDebito); // Aplica desconto de 10%
+} else if (condicaoPagamento === "dinheiro" || condicaoPagamento === "pix") {
+    valorPago = precoEtiqueta * (1 - descontoDinheiroPix); // Aplica desconto de 15%
+} else if (condicaoPagamento === "duas vezes") {
+    valorPago = precoEtiqueta; // Preço normal sem juros
+} else if (condicaoPagamento === "acima de duas vezes") {
+    valorPago = precoEtiqueta * (1 + jurosAcimaDuasVezes); // Aplica juros de 10%
+} else {
+    console.log("Condição de pagamento inválida.");
+}
+
+// 4. Exibe o valor final, apenas se valorPago estiver definido
+if (valorPago !== undefined) {
+    console.log(`O valor a ser pago é: R$ ${valorPago.toFixed(2)}`);
+}
 
 /*
 Lógica por trás do código:
-1. Recebe o preço original do produto (precoOriginal)
-2. Calcula o valor do desconto multiplicando o preço original por 0.10 (10%)
-3. Calcula o valor pago subtraindo o desconto do preço original
-4. Exibe o valor pago no console, formatado com 2 casas decimais usando toFixed(2)
+1. Define o preço normal do produto e as taxas de desconto/juros para cada forma de pagamento.
+2. Recebe a condição de pagamento escolhida pelo usuário.
+3. Usa estruturas condicionais if/else para calcular o valor final:
+    - débito => aplica 10% de desconto
+    - dinheiro ou pix => aplica 15% de desconto
+    - duas vezes => preço normal
+    - acima de duas vezes => aplica 10% de juros
+    - condição inválida => exibe mensagem de erro
+4. Exibe o valor final formatado com duas casas decimais.
 */
