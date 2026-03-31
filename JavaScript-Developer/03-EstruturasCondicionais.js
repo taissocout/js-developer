@@ -90,4 +90,3 @@ se numero5 for igual a 0 {
     Imprime "O número não é divisível por 5."
 }
 */
-
