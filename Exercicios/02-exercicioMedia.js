@@ -11,9 +11,9 @@ Objetivo:
 */
 
 // 1. Declaração das variáveis
-const nota1 = 2.5; // Primeira nota do aluno
-const nota2 = 8.0; // Segunda nota do aluno
-const nota3 = 6.5; // Terceira nota do aluno
+const nota1 = 5; // Primeira nota do aluno
+const nota2 = 3; // Segunda nota do aluno
+const nota3 = 7; // Terceira nota do aluno
 
 // 2. Calcular a média das notas
 const media = (nota1 + nota2 + nota3) / 3; // Soma todas as notas e divide por 3
