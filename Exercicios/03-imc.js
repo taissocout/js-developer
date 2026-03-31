@@ -15,7 +15,7 @@ Objetivo:
 const peso = 112; // Peso da pessoa em kg
 const altura = 1.81; // Altura da pessoa em metros
 // 2. Calcular o IMC
-const imc = peso / (altura * altura); // Fórmula para calcular o IMC
+const imc = peso / Math.pow(altura, 2); // Fórmula para calcular o IMC
 // 3. Classificar o resultado do IMC
 if (imc < 18.5) {
     console.log(`O IMC é ${imc.toFixed(2)}. Classificação: Abaixo do peso.`);
