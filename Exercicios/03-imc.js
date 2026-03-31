@@ -1,39 +1,44 @@
 /*
-Vamos criar um programa para calcular o Índice de Massa Corporal (IMC) de uma pessoa. O IMC é calculado dividindo o peso da pessoa (em kg) pela altura ao quadrado (em metros). O programa deve classificar o resultado do IMC em categorias, como "Abaixo do peso", "Peso normal", "Sobrepeso" e "Obesidade".
+Vamos criar um programa para calcular o preço final de um produto considerando o desconto baseado na forma de pagamento.
 
 Objetivo:
-- Receber o peso e a altura de uma pessoa
-- Calcular o IMC usando a fórmula: IMC = peso / (altura * altura)
-- Classificar o resultado do IMC em categorias:
-    - Abaixo do peso: IMC < 18.5
-    - Peso normal: 18.5 <= IMC < 25
-    - Sobrepeso: 25 <= IMC < 30
-    - Obesidade: IMC >= 30
+- Receber o preço do produto
+- Receber a forma de pagamento (1 = débito, 2 = dinheiro ou PIX)
+- Aplicar o desconto correto:
+    - Débito: 10% de desconto
+    - Dinheiro ou PIX: 15% de desconto
+- Informar ao usuário o valor final a ser pago
 */
 
 // 1. Declaração das variáveis
-const peso = 112; // Peso da pessoa em kg
-const altura = 1.81; // Altura da pessoa em metros
-// 2. Calcular o IMC
-const imc = peso / Math.pow(altura,); // Fórmula para calcular o IMC
-// 3. Classificar o resultado do IMC
-if (imc < 18.5) {
-    console.log(`O IMC é ${imc.toFixed(2)}. Classificação: Abaixo do peso.`);
-} else if (imc >= 18.5 && imc < 25) {
-    console.log(`O IMC é ${imc.toFixed(2)}. Classificação: Peso normal.`);
-} else if (imc >= 25 && imc < 30) {
-    console.log(`O IMC é ${imc.toFixed(2)}. Classificação: Sobrepeso.`);
+const precoEtiqueta = 100; // Preço original do produto
+const formaDePagamento = 2; // 1 = débito, 2 = dinheiro ou PIX
+const descontoDebito = 0.1; // 10% de desconto para débito
+const descontoDinheiroPix = 0.15; // 15% de desconto para dinheiro ou PIX
+
+// 2. Definir booleanos para identificar o tipo de pagamento
+const ehDebito = (formaDePagamento === 1);
+const ehDinheiroOuPix = (formaDePagamento === 2);
+
+// 3. Aplicar a lógica de desconto e imprimir o valor final
+if (ehDebito) {
+    // Caso pagamento seja débito
+    console.log(`O desconto foi de 10% e você pagou R$ ${precoEtiqueta * (1 - descontoDebito)}`);
+} else if (ehDinheiroOuPix) {
+    // Caso pagamento seja dinheiro ou PIX
+    console.log(`O desconto foi de 15% e você pagou R$ ${precoEtiqueta * (1 - descontoDinheiroPix)}`);
 } else {
-    console.log(`O IMC é ${imc.toFixed(2)}. Classificação: Obesidade.`);
+    // Caso forma de pagamento inválida ou sem desconto
+    console.log(`Forma de pagamento inválida ou sem desconto. Você pagará R$ ${precoEtiqueta}`);
 }
+
 /*
 Lógica por trás do código:
-1. Recebe o peso e a altura da pessoa
-2. Calcula o IMC usando a fórmula: IMC = peso / (altura * altura)
-3. Usa estruturas condicionais if/else para classificar o resultado do IMC:
-    - imc < 18.5 => Abaixo do peso
-    - 18.5 <= imc < 25 => Peso normal
-    - 25 <= imc < 30 => Sobrepeso
-    - imc >= 30 => Obesidade
-4. Imprime o resultado do IMC formatado com 2 casas decimais e a classificação correspondente
-*/  
+1. Recebe o preço do produto e a forma de pagamento
+2. Usa booleanos para identificar se é débito ou dinheiro/PIX
+3. Usa estruturas condicionais if/else para aplicar o desconto correspondente:
+    - ehDebito = true => desconto de 10%
+    - ehDinheiroOuPix = true => desconto de 15%
+    - Caso contrário, sem desconto
+4. Calcula o valor final subtraindo o desconto e imprime no console
+*/
