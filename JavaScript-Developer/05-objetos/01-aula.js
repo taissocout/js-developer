@@ -34,20 +34,24 @@ const pessoa = {
     }
 }
 
-pessoa.saudacao = function() {
-    console.log(`Olá, meu nome é ${this.nome}, tenho ${this.idade} anos e eu sou um ${this.profissao}.`);
-} // Atualiza o método saudacao do objeto pessoa para uma nova função que exibe uma mensagem de saudação com as propriedades do objeto
+// pessoa.saudacao = function() {
+//     console.log(`Olá, meu nome é ${this.nome}, tenho ${this.idade} anos e eu sou um ${this.profissao}.`);
+// } // Atualiza o método saudacao do objeto pessoa para uma nova função que exibe uma mensagem de saudação com as propriedades do objeto
 
 /*
 Só descomentar se retirar pessoa.saudacao = function 
 pessoa.nome = 'Jupira'; // Atualiza o valor da propriedade nome do objeto pessoa para 'Jupira'
 pessoa.idade = 30; // Atualiza o valor da propriedade idade do objeto pessoa para 30
 pessoa.profissao = 'Designer'; // Atualiza o valor da propriedade profissao do objeto pessoa para 'Designer'
-*/
 
 pessoa.saudacao();
+*/
 
+// Vamos agora criar um atributo da pessoa e chamar via console.log
+const atributo = 'profissao'; // Declaração da variável atributo com o valor 'profissao'
+console.log(pessoa[atributo]); // Acessa a propriedade do objeto pessoa usando a notação de colchetes e exibe o valor da propriedade profissao no console
 
+console.log(pessoa['nome']); // Acessa a propriedade nome do objeto pessoa usando a notação de colchetes e exibe o valor da propriedade nome no console
 
 
 
