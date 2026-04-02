@@ -1,56 +1,101 @@
-// Vamos desmembrar o codigo abaixo e colocar a logica de desconto em uma funcao, para deixar o codigo mais organizado e reutilizavel
-
 /*
-Vamos criar um programa para calcular o preço final de um produto considerando o desconto baseado na forma de pagamento.  
+Programa para calcular o preço final de um produto com base
+na forma de pagamento (desconto ou juros).
+
 Objetivo:
-- Receber o preço do produto
-- Receber a forma de pagamento (1 = débito, 2 = dinheiro ou PIX)
-- Aplicar o desconto correto:
-    - Débito: 10% de desconto
-    - Dinheiro ou PIX: 15% de desconto
-- Informar ao usuário o valor final a ser pago
+- Aplicar desconto para pagamento à vista
+- Aplicar juros para pagamento no crédito parcelado
+- Exibir valor total e valor por parcela (se houver)
 */
 
+console.log("🚀 Iniciando programa");
+
+// 1. Criar produto
 function criarProduto(nome, preco, formaDePagamento) {
-    return {
-        nome: nome,
-        preco: preco,
-        formaDePagamento: formaDePagamento
-    };
+    return { nome, preco, formaDePagamento };
 }
 
-function aplicarDesconto(preco, formaDePagamento) {
-    const descontoDebito = 0.1; // 10% de desconto para débito
-    const descontoDinheiroPix = 0.15; // 15% de desconto para dinheiro ou PIX
-    if (formaDePagamento === 1) {
-        return preco * (1 - descontoDebito); // Aplica desconto de 10%
-    } else if (formaDePagamento === 2) {
-        return preco * (1 - descontoDinheiroPix); // Aplica desconto de 15%
+// 2. Calcular preço final (desconto ou juros)
+function calcularPrecoFinal(preco, formaDePagamento) {
+    // Descontos
+    if (formaDePagamento === 1) return preco * 0.9;  // débito (10% OFF)
+    if (formaDePagamento === 2) return preco * 0.85; // PIX/dinheiro (15% OFF)
+
+    // Juros (crédito)
+    if (formaDePagamento === 3) return preco * 1.05; // 3x
+    if (formaDePagamento === 5) return preco * 1.10; // 5x
+    if (formaDePagamento === 12) return preco * 1.20; // 12x
+
+    return preco;
+}
+
+// 3. Definir parcelas
+function obterParcelas(formaDePagamento) {
+    if (formaDePagamento === 3) return 3;
+    if (formaDePagamento === 5) return 5;
+    if (formaDePagamento === 12) return 12;
+    return 1;
+}
+
+// 4. Exibir resultado
+function exibirResultado(produto, precoFinal, parcelas) {
+    const valorParcela = precoFinal / parcelas;
+
+    if (parcelas > 1) {
+        console.log(
+            `Produto: ${produto.nome}\n` +
+            `Preço original: R$${produto.preco}\n\n` +
+            `Pagamento no crédito em ${parcelas}x\n` +
+            `Total com juros: R$${precoFinal.toFixed(2)}\n` +
+            `Parcela: R$${valorParcela.toFixed(2)}`
+        );
     } else {
-        return preco; // Sem desconto para formas de pagamento inválidas
+        let tipoPagamento = "";
+
+        if (produto.formaDePagamento === 1) tipoPagamento = "Débito (10% de desconto)";
+        else if (produto.formaDePagamento === 2) tipoPagamento = "PIX/Dinheiro (15% de desconto)";
+        else tipoPagamento = "Pagamento padrão";
+
+        console.log(
+            `Produto: ${produto.nome}\n` +
+            `Preço original: R$${produto.preco}\n\n` +
+            `Forma de pagamento: ${tipoPagamento}\n` +
+            `Valor final: R$${precoFinal.toFixed(2)}`
+        );
     }
 }
 
-
-
+// 5. Função principal
 function main(nome, preco, formaDePagamento) {
     const produto = criarProduto(nome, preco, formaDePagamento);
-    const precoFinal = aplicarDesconto(produto.preco, produto.formaDePagamento);
-    if (formaDePagamento === 1) {
-        console.log(`A ${produto.nome} estava custando apenas R$${produto.preco}\n\nMas nós conseguimos te dar um desconto de 10%\n\nPor pagar no Debito e você vai pagar apenas\nR$${precoFinal}`);
-    } else if (formaDePagamento === 2) {
-        console.log(`A ${produto.nome} estava custando apenas R$${produto.preco}\n\nMas nós conseguimos te dar um desconto de 15%\n\nPor pagar no Dinheiro ou PIX e você vai pagar apenas\nR$${precoFinal}`);
-    } else {
-        console.log(`Forma de pagamento inválida ou sem desconto. Você pagará\nR$ ${precoFinal}`);
-    }
+    const precoFinal = calcularPrecoFinal(produto.preco, produto.formaDePagamento);
+    const parcelas = obterParcelas(produto.formaDePagamento);
+
+    exibirResultado(produto, precoFinal, parcelas);
 }
 
-main('Camiseta', 100, 1); // Exemplo de uso da função principal
+// 6. Execução
+/*
+Formas de pagamento:
+1 = débito
+2 = PIX/dinheiro
+3 = crédito 3x
+5 = crédito 5x
+12 = crédito 12x
+*/
 
+main('PlayStation 5', 4500, 5);
 
-/*Lógica por trás do código:
-1. Criamos uma função criarProduto para encapsular a criação de um objeto produto com nome, preço e forma de pagamento.
-2. Criamos uma função aplicarDesconto que recebe o preço e a forma de pagamento, e retorna o preço final aplicando o desconto correto.
-3. A função main chama criarProduto para criar um produto e depois chama aplicarDesconto para calcular o preço final, imprimindo o resultado no console.
-4. Isso torna o código mais organizado, modular e reutilizável, permitindo que possamos criar diferentes produtos e calcular seus preços finais facilmente.
+/*
+Lógica:
+1. Criamos o produto
+2. Aplicamos desconto ou juros dependendo da forma de pagamento
+3. Definimos se há parcelamento
+4. Calculamos valor total e parcelas
+5. Exibimos o resultado
+
+Benefícios:
+- Código modular
+- Fácil manutenção
+- Simula um sistema real de pagamento
 */
