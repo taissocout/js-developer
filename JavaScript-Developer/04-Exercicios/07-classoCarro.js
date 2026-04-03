@@ -48,18 +48,18 @@ class Carro {
 // ==========================
 
 // ✅ Primeiro cria os objetos
-const carro1 = new Carro('Toyota', 'Vermelho', 0.1);
-const carro2 = new Carro('Honda', 'Azul', 0.08);
+const corolla = new Carro('Toyota', 'Vermelho', 0.1);
+const civic = new Carro('Honda', 'Azul', 0.08);
 
 // ✅ Exibe informações básicas
-console.log(carro1.marca, carro1.cor);
-console.log(carro2.marca, carro2.cor);
+console.log(corolla.marca, corolla.cor);
+console.log(civic.marca, civic.cor);
 
 // ✅ Calcula gasto individual
-carro1.calcularGasto(100, 5.50);
-carro2.calcularGasto(150, 5.50);
+corolla.calcularGasto(100, 5.50);
+civic.calcularGasto(150, 5.50);
 
 // ✅ Compara os dois carros
-const diferenca = carro1.compararGasto(100, 5.50, carro2);
+const diferenca = corolla.compararGasto(100, 5.50, civic);
 
 console.log(`💰 Diferença de gasto: R$ ${diferenca.toFixed(2)}`);
