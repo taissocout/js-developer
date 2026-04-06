@@ -35,6 +35,33 @@ const media = soma / notas.length;
 
 console.log(media.toFixed(2))
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const soma = notas[0] + notas[1] + notas[2] + notas[3] + notas[4] + notas[5] + notas[6];
 
 // console.log(soma / 7);
