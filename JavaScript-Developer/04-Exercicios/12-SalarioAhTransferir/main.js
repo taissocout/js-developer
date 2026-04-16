@@ -1,28 +1,38 @@
 const { gets, print } = require('./funcoes.js');
 
+function calcularDesconto(salario) {
+    let desconto;
+
+    if (salario <= 1100) {
+        desconto = 0.05;
+    } else if (salario <= 2500) {
+        desconto = 0.10;
+    } else {
+        desconto = 0.15;
+    }
+
+    return desconto;
+}
+
+function calcularSalarioFinal(salario, beneficios) {
+    const desconto = calcularDesconto(salario);
+    const valorDesconto = salario * desconto;
+    const total = (salario - valorDesconto) + beneficios;
+
+    return { desconto, valorDesconto, total };
+}
+
+function exibirResultado(salario, beneficios) {
+    const { desconto, valorDesconto, total } = calcularSalarioFinal(salario, beneficios);
+
+    print(`Salário bruto:        R$ ${salario.toFixed(2)}`);
+    print(`Desconto aplicado:    ${(desconto * 100).toFixed(0)}% → - R$ ${valorDesconto.toFixed(2)}`);
+    print(`Benefícios:           + R$ ${beneficios.toFixed(2)}`);
+    print(`-----------------------------------`);
+    print(`Salário a transferir: R$ ${total.toFixed(2)}`);
+}
+
 const salario = gets();
 const beneficios = gets();
 
-let valorDesconto;
-let salarioAhTransferir;
-
-if (salario <= 1100) {
-    valorDesconto = salario * 0.05;
-    salarioAhTransferir = (salario - valorDesconto) + beneficios;
-    print(`Salário bruto:        R$ ${salario.toFixed(2)}`);
-    print(`Desconto aplicado:    5% → - R$ ${valorDesconto.toFixed(2)}`);
-} else if (salario <= 2500) {
-    valorDesconto = salario * 0.10;
-    salarioAhTransferir = (salario - valorDesconto) + beneficios;
-    print(`Salário bruto:        R$ ${salario.toFixed(2)}`);
-    print(`Desconto aplicado:    10% → - R$ ${valorDesconto.toFixed(2)}`);
-} else {
-    valorDesconto = salario * 0.15;
-    salarioAhTransferir = (salario - valorDesconto) + beneficios;
-    print(`Salário bruto:        R$ ${salario.toFixed(2)}`);
-    print(`Desconto aplicado:    15% → - R$ ${valorDesconto.toFixed(2)}`);
-}
-
-print(`Benefícios:           + R$ ${beneficios.toFixed(2)}`);
-print(`-----------------------------------`);
-print(`Salário a transferir: R$ ${salarioAhTransferir.toFixed(2)}`);
+exibirResultado(salario, beneficios);
