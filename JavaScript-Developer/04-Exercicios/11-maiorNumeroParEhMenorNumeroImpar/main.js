@@ -1,69 +1,31 @@
+// Importa as funções gets (lê entrada) e print (exibe saída) do arquivo auxiliar
 const { gets, print } = require('./funcao.js');
 
-// Inicializando variáveis de controle
-
-// Começa com o menor valor possível
-// Qualquer número par será maior que isso
+// Inicializa o maior par com -Infinity para garantir que qualquer número par
+// encontrado será necessariamente maior que esse valor inicial
 let maiorPar = -Infinity;
 
-// Começa com o maior valor possível
-// Qualquer número ímpar será menor que isso
+// Inicializa o menor ímpar com Infinity para garantir que qualquer número ímpar
+// encontrado será necessariamente menor que esse valor inicial
 let menorImpar = Infinity;
 
-
-// Loop vai rodar 5 vezes (porque temos 5 entradas)
+// Lê 5 números do usuário, um por vez
 for (let i = 0; i < 5; i++) {
+    const n = gets(); // Lê o próximo número da entrada
 
-    // 🔹 Pegando um número da lista (entrada simulada)
-    const n = gets();
-
-    // 🧠 DEBUG:
-    // "Qual número eu peguei agora?"
-    // Exemplo: 5, depois 3, depois 4, etc.
-
-    // =========================
-    // 🔍 VERIFICAÇÃO DE PAR
-    // =========================
+    // Verifica se o número é par (resto da divisão por 2 é 0)
+    // e se é maior que o maior par encontrado até agora
     if (n % 2 === 0 && n > maiorPar) {
-
-        // 🧠 DEBUG:
-        // "Esse número é par?"
-        // "Ele é maior que o maiorPar atual?"
-
-        // Se sim, atualiza o maior número par encontrado
-        maiorPar = n;
-
-        // 🧠 DEBUG:
-        // "Atualizei o maiorPar para esse novo valor"
+        maiorPar = n; // Atualiza o maior par
     }
 
-
-    // =========================
-    // 🔍 VERIFICAÇÃO DE ÍMPAR
-    // =========================
+    // Verifica se o número é ímpar (resto da divisão por 2 é diferente de 0)
+    // e se é menor que o menor ímpar encontrado até agora
     if (n % 2 !== 0 && n < menorImpar) {
-
-        // 🧠 DEBUG:
-        // "Esse número é ímpar?"
-        // "Ele é menor que o menorImpar atual?"
-
-        // Se sim, atualiza o menor número ímpar encontrado
-        menorImpar = n;
-
-        // 🧠 DEBUG:
-        // "Atualizei o menorImpar para esse novo valor"
+        menorImpar = n; // Atualiza o menor ímpar
     }
 }
 
-
-// =========================
-// 📤 SAÍDA FINAL
-// =========================
-
-// 🧠 DEBUG FINAL:
-// "Depois de percorrer todos os números, qual foi o maior par encontrado?"
+// Exibe os resultados finais após processar todos os 5 números
 print(`Maior número par: ${maiorPar}`);
-
-// 🧠 DEBUG FINAL:
-// "Qual foi o menor número ímpar encontrado?"
-print(`Menor número ímpar: ${menorImpar}`); 
+print(`Menor número ímpar: ${menorImpar}`);
