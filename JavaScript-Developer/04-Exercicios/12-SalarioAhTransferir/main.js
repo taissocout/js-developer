@@ -13,6 +13,11 @@ if (salario <= 1100) {
     desconto = 0.15;
 }
 
-const salarioAhTransferir = (salario - (salario * desconto)) + beneficios;
+const valorDesconto = salario * desconto;
+const salarioAhTransferir = (salario - valorDesconto) + beneficios;
 
+print(`Salário bruto:        R$ ${salario.toFixed(2)}`);
+print(`Desconto aplicado:    ${(desconto * 100).toFixed(0)}% → - R$ ${valorDesconto.toFixed(2)}`);
+print(`Benefícios:           + R$ ${beneficios.toFixed(2)}`);
+print(`-----------------------------------`);
 print(`Salário a transferir: R$ ${salarioAhTransferir.toFixed(2)}`);
