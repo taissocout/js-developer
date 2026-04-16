@@ -1,4 +1,4 @@
-const entradas = [2000, 250];
+const entradas = [2500.01, 943]; // Simulando as entradas: salário bruto e benefícios
 let i = 0;
 
 function gets() {
