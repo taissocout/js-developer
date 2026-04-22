@@ -1,0 +1,312 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f8fc;
+}
+
+.content {
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+    background-color: #fff;
+}/* ============================================
+   VARIÁVEIS GLOBAIS (CSS Custom Properties)
+   ============================================ */
+:root {
+    --primary-color: #6c5ce7;
+    --secondary-color: #a8e6cf;
+    --dark-bg: #1a1a2e;
+    --light-bg: #f0f2f5;
+    --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* Container Principal */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   SEÇÃO DE ESTUDO - TUTORIAL
+   ============================================ */
+.study-section {
+    margin-bottom: 2rem;
+}
+
+.study-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(10px);
+}
+
+.study-card h2 {
+    color: var(--dark-bg);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.study-card h2 i {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.study-item {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 1rem;
+    border-left: 4px solid var(--primary-color);
+    transition: var(--transition);
+}
+
+.study-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow);
+}
+
+.study-item i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.study-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.study-item p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+}
+
+.study-item code {
+    background: #f4f4f4;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    color: #e83e8c;
+    display: inline-block;
+}
+
+/* ============================================
+   POKÉDEX CONTAINER
+   ============================================ */
+.pokedex-container {
+    background: white;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.pokedex-header {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #16213e 100%);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+/* Luzes da Pokédex */
+.pokedex-lights {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.light.blue { background: #3498db; }
+.light.red { background: #e74c3c; animation-delay: 0.3s; }
+.light.yellow { background: #f1c40f; animation-delay: 0.6s; }
+.light.green { background: #2ecc71; animation-delay: 0.9s; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.9); }
+}
+
+.pokedex-header h1 {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background: rgba(255,255,255,0.2);
+    padding: 0.2rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.7rem;
+    font-weight: normal;
+}
+
+.pokedex-header p {
+    margin-top: 0.5rem;
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+/* Grid de Pokémon */
+.pokemons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+    list-style: none;
+}
+
+/* Loading Placeholder */
+.loading-placeholder {
+    text-align: center;
+    padding: 3rem;
+    color: #999;
+    font-size: 1.2rem;
+    grid-column: 1 / -1;
+}
+
+/* Paginação */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 1.5rem 1.5rem;
+}
+
+.btn-load-more {
+    background: linear-gradient(135deg, var(--primary-color), #a29bfe);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+}
+
+.btn-load-more:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+}
+
+.btn-load-more:active {
+    transform: translateY(0);
+}
+
+.btn-counter {
+    font-size: 0.7rem;
+    background: rgba(255,255,255,0.3);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+}
+
+/* Status da API */
+.api-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    font-size: 0.8rem;
+    color: #666;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-item i {
+    color: var(--primary-color);
+}
+
+.status-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.status-item a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .study-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pokemons-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.8rem;
+        padding: 1rem;
+    }
+    
+    .pokedex-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .btn-load-more {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .content {
+        max-width: 992px;
+        height: auto;
+        margin: 1rem auto;
+        border-radius: 1rem;
+    }
+}

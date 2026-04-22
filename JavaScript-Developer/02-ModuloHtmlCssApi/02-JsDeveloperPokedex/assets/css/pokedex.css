@@ -1,0 +1,192 @@
+/* ============================================
+   CORES DOS TIPOS (Pokémon Types)
+   ============================================ */
+.normal { background: linear-gradient(135deg, #A8A878, #8A8A5E); }
+.fire { background: linear-gradient(135deg, #F08030, #DD6610); }
+.water { background: linear-gradient(135deg, #6890F0, #3860C0); }
+.electric { background: linear-gradient(135deg, #F8D030, #D0A010); }
+.grass { background: linear-gradient(135deg, #78C850, #48A020); }
+.ice { background: linear-gradient(135deg, #98D8D8, #68B8B8); }
+.fighting { background: linear-gradient(135deg, #C03028, #902018); }
+.poison { background: linear-gradient(135deg, #A040A0, #702870); }
+.ground { background: linear-gradient(135deg, #E0C068, #B89840); }
+.flying { background: linear-gradient(135deg, #A890F0, #7860C0); }
+.psychic { background: linear-gradient(135deg, #F85888, #C83058); }
+.bug { background: linear-gradient(135deg, #A8B820, #788818); }
+.rock { background: linear-gradient(135deg, #B8A038, #887018); }
+.ghost { background: linear-gradient(135deg, #705898, #483870); }
+.dragon { background: linear-gradient(135deg, #7038F8, #4820B8); }
+.dark { background: linear-gradient(135deg, #705848, #483828); }
+.steel { background: linear-gradient(135deg, #B8B8D0, #8888A0); }
+.fairy { background: linear-gradient(135deg, #EE99AC, #D8708C); }
+
+/* ============================================
+   CARD DO POKÉMON
+   ============================================ */
+.pokemon-card {
+    list-style: none;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pokemon-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.pokemon-inner {
+    padding: 1rem;
+    color: white;
+    position: relative;
+}
+
+.pokemon-number {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    opacity: 0.7;
+    background: rgba(0,0,0,0.3);
+    padding: 0.2rem 0.5rem;
+    border-radius: 2rem;
+}
+
+.pokemon-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+}
+
+.pokemon-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pokemon-types {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.pokemon-type {
+    background: rgba(255,255,255,0.25);
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.pokemon-image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: 0.3s;
+}
+
+.pokemon-card:hover .pokemon-image {
+    transform: scale(1.1);
+}
+
+/* ============================================
+   MODAL (CORRIGIDO SEM QUEBRAR)
+   ============================================ */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+
+    /* SCROLL DA TELA INTEIRA */
+    overflow-y: auto;
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 1rem;
+
+    /* 🔴 LIMITE DE ALTURA */
+    max-height: 90vh;
+
+    /* 🔴 IMPORTANTE */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.modal-close {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* 🔴 SCROLL INTERNO */
+.modal-body {
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+/* ============================================
+   STATS
+   ============================================ */
+.stat-bar-container {
+    margin: 0.5rem 0;
+}
+
+.stat-bar {
+    width: 100%;
+    height: 15px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.stat-bar-fill {
+    height: 100%;
+    background: #667eea;
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+@media (max-width: 480px) {
+    .pokemon-image {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+}
