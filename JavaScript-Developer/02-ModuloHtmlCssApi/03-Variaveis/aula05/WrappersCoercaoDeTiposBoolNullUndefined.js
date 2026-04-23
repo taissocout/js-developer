@@ -71,3 +71,33 @@ console.log(sym1 === sym2); // false, pois cada símbolo é único
 //  Em resumo, os wrappers permitem que você use métodos e propriedades em valores primitivos, a coerção de tipos é o processo pelo qual o JavaScript converte automaticamente um valor de um tipo para outro quando necessário, os booleanos representam valores lógicos que podem ser verdadeiros ou falsos, e null e undefined são valores especiais que representam a ausência de valor ou a falta de inicialização. Além disso, os tipos de dados em JavaScript incluem Numbers, Strings e Symbols, cada um com suas próprias características e formas de declaração. É importante entender esses conceitos para escrever código JavaScript eficaz e evitar erros relacionados a tipos de dados.
 
 
+// Vamos explicar sobre template string e interpolação de variáveis em JavaScript. Template strings, também conhecidas como template literals, são uma forma mais conveniente e legível de criar strings em JavaScript. Elas permitem que você inclua expressões e variáveis diretamente dentro da string, usando a sintaxe `${}` para interpolação.
+
+// Para criar uma template string, você deve usar crases (``) em vez de aspas simples ou duplas. Dentro da template string, você pode incluir expressões JavaScript usando a sintaxe `${expression}`. O JavaScript irá avaliar a expressão e inserir o resultado na string. Isso torna as template strings muito úteis para criar mensagens dinâmicas ou formatar strings de maneira mais legível.
+
+// Exemplo de template string e interpolação de variáveis:
+let name = "Alice";
+let age = 30;
+let message = `My name is ${name} and I am ${age} years old.`;
+console.log(message); // "My name is Alice and I am 30 years old."
+
+// Você também pode usar expressões mais complexas dentro da interpolação, como operações matemáticas ou chamadas de função. Por exemplo:
+let a = 5;
+let b = 10;
+let sumMessage = `The sum of ${a} and ${b} is ${a + b}.`;
+console.log(sumMessage); // "The sum of 5 and 10 is 15."
+
+// Em resumo, as template strings em JavaScript permitem que você crie strings de forma mais conveniente e legível, usando crases e a sintaxe `${}` para interpolação de variáveis e expressões. Isso torna o código mais fácil de ler e escrever, especialmente quando você precisa criar mensagens dinâmicas ou formatar strings de maneira mais complexa.
+
+const id = 20;
+
+console.log(`<div id="' ${id}'"></div>`); // <div id="'20'"></div>
+
+console.log(`
+    <div id="
+    ${id}">
+    </div>
+`); // <div id="20"></div>
+
+// Em resumo, as template strings em JavaScript permitem que você crie strings de forma mais conveniente e legível, usando crases e a sintaxe `${}` para interpolação de variáveis e expressões. Isso torna o código mais fácil de ler e escrever, especialmente quando você precisa criar mensagens dinâmicas ou formatar strings de maneira mais complexa.
+
