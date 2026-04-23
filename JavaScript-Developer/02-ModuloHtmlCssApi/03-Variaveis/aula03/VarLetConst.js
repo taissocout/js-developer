@@ -19,9 +19,9 @@
 
     // Exemplo de const:
     const z = 10;
-    console.log(z);
+    // z = 20; // TypeError: Assignment to constant variable.
+    console.log(z); 
     // z = 20; // TypeError: Assignment to constant variable.   
 
     // Em resumo, var é a forma mais antiga e tem escopo global ou de função, let é a forma mais moderna e tem escopo de bloco, e const é usada para declarar constantes que não podem ser reatribuídas. É recomendado usar let e const em vez de var para evitar problemas de escopo e hoisting. 
 
-        
