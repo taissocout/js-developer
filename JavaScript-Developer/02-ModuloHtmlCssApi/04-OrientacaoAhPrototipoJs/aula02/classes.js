@@ -1,21 +1,98 @@
+/********************************************************************
+ * CORRIGIDO VIA CHATGPT AGENTE IA
+ * ❌ ERRO ORIGINAL
+ * 
+ * Você comentou a função construtora, mas tentou usar:
+ * Pessoa.prototype.apresentar
+ * 
+ * 👉 Problema:
+ * Nesse ponto, "Pessoa" NÃO EXISTE, então quebra com:
+ * ReferenceError: Pessoa is not defined
+ ********************************************************************/
 
-// função construtora para criar objetos do tipo Pessoa.
-function Pessoa(nome, idade) {
-    // quando temos uma function construtora ganhamos o this. O this é o objeto que está sendo criado, ou seja, a instância do objeto.
+
+/********************************************************************
+ * ✅ CORREÇÃO 1 — USANDO FUNÇÃO CONSTRUTORA + PROTOTYPE
+ ********************************************************************/
+
+// Função construtora (agora NÃO está comentada)
+function PessoaFunc(nome, idade) {
+    // "this" representa o objeto que será criado pelo "new"
     this.nome = nome;
     this.idade = idade;
-} 
-
-// podemos invocar atraves do operador New, que é o operador de criação de objetos. Ele cria um novo objeto vazio e depois chama a função construtora, passando o objeto vazio como contexto (this) para a função construtora. Assim, as propriedades nome e idade são adicionadas ao objeto criado.
-
-// vamos usar o prototype para adicionar um método à função construtora Pessoa. O protótipo é um objeto associado a cada função construtora, e os objetos criados a partir dessa função herdam as propriedades e métodos definidos no protótipo.
-Pessoa.prototype.apresentar = function() {
-    console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
 }
 
-// Criando um novo objeto do tipo Pessoa usando a função construtora
-const renan = new Pessoa('Renan', 30);
-// O operador new retorna o objeto criado, que é atribuído à variável renan. Agora, renan é um objeto do tipo Pessoa com as propriedades nome e idade definidas.
-console.log(renan); // Pessoa { nome: 'Renan', idade: 30 }
+// Aqui usamos o prototype corretamente,
+// pois a função já foi definida acima
+PessoaFunc.prototype.apresentar = function () {
+    console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
+};
 
-renan.apresentar(); // Olá, meu nome é Renan e tenho 30 anos.
+// Criando instância corretamente
+const renan = new PessoaFunc('Renan', 30);
+
+console.log(renan); 
+// Saída: PessoaFunc { nome: 'Renan', idade: 30 }
+
+renan.apresentar(); 
+// Saída: Olá, meu nome é Renan e tenho 30 anos.
+
+
+
+/********************************************************************
+ * ❌ ERRO ORIGINAL
+ * 
+ * Você declarou:
+ * function Pessoa() {}
+ * E depois:
+ * class Pessoa {}
+ * 
+ * 👉 Problema:
+ * Conflito de nomes no mesmo escopo
+ * (não pode redefinir a mesma entidade)
+ ********************************************************************/
+
+
+/********************************************************************
+ * ✅ CORREÇÃO 2 — USANDO CLASS (FORMA MODERNA)
+ ********************************************************************/
+
+class Pessoa {
+    constructor(nome, idade) {
+        // Mesma lógica da função construtora
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    // Esse método vai automaticamente para o prototype
+    apresentar() {
+        console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
+    }
+}
+
+// Criando nova instância com class
+const maria = new Pessoa('Maria', 28);
+
+console.log(maria); 
+// Saída: Pessoa { nome: 'Maria', idade: 28 }
+
+maria.apresentar();
+// Saída: Olá, meu nome é Maria e tenho 28 anos.
+
+
+
+/********************************************************************
+ * 🧠 INSIGHT IMPORTANTE (NÍVEL ENTREVISTA)
+ * 
+ * Essas duas abordagens são equivalentes:
+ * 
+ * class Pessoa {}
+ * 
+ * é praticamente o mesmo que:
+ * 
+ * function Pessoa() {}
+ * Pessoa.prototype.metodo = ...
+ * 
+ * 👉 Ou seja:
+ * "class" é apenas açúcar sintático sobre prototype.
+ ********************************************************************/
