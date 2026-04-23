@@ -61,5 +61,4 @@ console.log(estudante.__proto__ === pessoa); // true
 console.log(renan.__proto__ === pessoa); // true
 console.log(maria.__proto__ === pessoa); // true
 
-// resumindo: O protótipo é uma forma de compartilhar propriedades e métodos entre objetos. Ele permite que objetos herdem características de outros objetos, promovendo a reutilização de código e a criação de hierarquias de objetos.  
-    
+// resumindo: O protótipo é uma forma de compartilhar propriedades e métodos entre objetos. Ele permite que objetos herdem características de outros objetos, promovendo a reutilização de código e a criação de hierarquias de objetos.
